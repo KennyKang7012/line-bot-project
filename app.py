@@ -59,8 +59,12 @@ def handle_message(event):
     if text.startswith('/help'):
         reply_text = "可用命令:\n/help - 顯示幫助\n/time - 顯示當前時間"
     elif text.startswith('/time'):
-        from datetime import datetime
-        now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        import time
+        t = time.time()
+        t1 = time.localtime(t)
+        now = time.strftime('%Y/%m/%d %H:%M:%S',t1)
+        # from datetime import datetime
+        # now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         reply_text = f"當前時間是: {now}"
     else:
         reply_text = f"你說的是: {text}"
